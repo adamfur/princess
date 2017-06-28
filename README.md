@@ -10,13 +10,10 @@ SignalR requires a Owin context, usually that means listening to a port unless y
 // In the begining of the Azure Web Job
 var assemblyName = Assembly.GetAssembly(typeof(OwinServerFactory)).GetName().Name;
 
-using (WebApp.Start<Startup>(new StartOptions
+WebApp.Start<Startup>(new StartOptions
 {
     ServerFactory = assemblyName
-}))
-{
-    // Code here !!!
-}
+});
 ```
 
 
@@ -30,7 +27,7 @@ public static class OwinServerFactory
 
     public static IDisposable Create(Func<IDictionary<string, object>, Task> app, IDictionary<string, object> properties)
     {
-        return new Disposable();
+        return null;
     }
 }
 
